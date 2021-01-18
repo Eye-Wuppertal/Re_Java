@@ -1,2 +1,2 @@
 # Re_Java
-Java 
+A new Java-studying from nothing.
