@@ -1,2 +1,2 @@
-# Re-Java-Studying-From-Zero
+# Re_Java
 Java 
