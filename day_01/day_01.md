@@ -18,4 +18,6 @@ public class HelloWorld {
 
 键入 java helloWorld           (java为运行指令，运行编译之后的.class文件)
 
-![image-20210120132716999](D:\Git_Store\Re_Java\image-20210120132716999.png)
+![image-20210120132716999](D:\Git_Store\Re_Java\Day_01\Img\
+
+image-20210120132716999.png)
