@@ -261,3 +261,53 @@ public class Demo05_Const{
 
 1. 基本赋值： a = 1；
 2. 复合赋值： +=、-+、*=、/=、%=
+
+```java
+public class Demo06_Const{
+    public static void main(String[] args){
+        int a = 10;
+        int b = 10;
+        int c = 10;
+        int d = 10;
+        System.out.println("-----a+=a++-----");
+        a+=a++;
+        System.out.println(a);//20
+        System.out.println("-----b+=++b-----");
+        b+=++b;
+        System.out.println(b);//21
+        System.out.println("-----c+=(c++)-----");
+        c+=(c++);
+        System.out.println(c);//20
+        System.out.println("-----d+=(++d)-----");
+        d+=(++d);
+        System.out.println(d);//21
+    }
+}
+```
+
+![image-20210122125105434](D:\Git_Store\Re_Java\day_01\Img\image-20210122125105434.png)
+
+#### 4.比较运算符：==、<、>、<=、>=、!=
+
+比较关系成立，则返回true，不成立返回false。
+
+#### 5.逻辑运算符：&&（与）、||（或）、！（非）
+
+&&和||具有短路功能：如果根据左边结果可以直接得到最终结果，右边将不再执行
+
+false&&（）：false、  true||（）：true  括号中的代码将不再执行
+
+#### 6.三元运算符：数据类型 变量名 = 条件判断？表达式A:表达式B
+
+判断条件是否成立，成立则将表达式A赋给变量，不成立则赋给B
+
+注意事项：
+
+1. 进行赋值时，表达式A、B都应该符合数据类型的要求
+2. 三元运算符的结果必须被使用
+
+
+
+
+
+第一天的例子名都有const，是失误哈哈哈，懒得改了
