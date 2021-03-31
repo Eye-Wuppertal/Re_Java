@@ -1,0 +1,87 @@
+# 学科 - 获取指定学科的信息【学科名称，创建时间，创建者，下属的学科目录，下属的学科标签】  -- 
+# 获得了学科的名称，时间，创建者
+
+select 
+c.name,c.create_date,u.username,
+(select group_concat(name) from t_catalog where course_id = c.id) as catelogArr, 
+(select group_concat(name) from t_tag where course_id = c.id) as tagArr
+from t_course c,t_user u 
+where c.name='java' and c.user_id = u.id;
+
+# 获得了下属学科的目录列表
+select group_concat(name) from t_catalog where course_id i (select id from t_course c where c.name='java');
+# 获得了下属学科的标签列表
+select group_concat(name) from t_tag where course_id = (select id from t_course c where c.name='java');
+
+#---------
+select name from t_course where 试题数量最多
+# 首先所有的试题数量，目标是找到指定学科的数量
+select * from (select (select name from t_course where id = q.course_id ) as name,count(*) as count from t_question q GROUP BY course_id) as t ORDER BY t.count DESC limit 1
+
+
+
+
+
+###
+
+
+
+
+
+# 查询 数据 select 列名 from 表名
+SELECT name as 课程名称,create_date 创建时间 FROM t_course;
+
+select DISTINCT  user_id from t_course
+
+SELECT name as 课程名称,create_date 创建时间 
+FROM t_course 
+WHERE name like '%h%' or name like 'P___';
+
+
+# SELECT 查询什么--列名来标识，FROM 从哪儿差-那张表 WHERE 什么条件 可以用and或者or来连接多个条件；如果要对结果集排序显示，ORDER BY 排序的列 asc正序，desc倒叙；如果 想要指定获取结果的条数 limit 数量
+# 其他的关键字，结果去重 DISTINCT
+
+
+
+SELECT id,name as 课程名称,create_date 创建时间 FROM t_course where id>1 ORDER BY id desc limit 2;#asc rand();
+
+
+
+
+# 添加 INSERT into 给哪张表添加 (添加什么内容 列名) VALUES (与列名对应的值)
+insert into 
+t_course(name,user_id,order_no) 
+VALUES ('英语',1,10)
+# 注意 省略表名后边的() 代表将列名全写了
+
+# insert into 给哪张表添加 SET 键值对用,隔开
+INSERT INTO t_course SET name='数学',user_id=2,order_no=99;
+
+#修改 update 修改谁 set 键值对
+UPDATE t_course SET name='数学' WHERE create_date BETWEEN '2019-08-01' and '2019-08-08';
+
+DELETE FROM t_course WHERE id < 4;
+
+
+select * from t_course limit 2,2
+
+
+
+
+
+### 获取所有有下属目录的课程的信息
+SELECT * from t_course c RIGHT JOIN t_catalog t ON c.id = t.course_id
+ 
+# 获取到 所有没有下属目录的课程信息
+SELECT * from t_course c LEFT JOIN t_catalog t ON c.id = t.course_id where t.course_id=NULL
+
+#
+
+select name,create_date from t_course
+UNION
+select name,order_no from t_tag
+union
+select username,password from t_user
+
+select max(id),(user_id+111) from t_course GROUP BY user_id
+select username, CONCAT(source,remark) from t_user
